@@ -1,0 +1,26 @@
+name: Build NuGet Package
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Environment
+      uses: ./.github/actions/setup-env
+
+    - name: Build Artifacts
+      run: dotnet pack ./ReQuesty.Runtime/ReQuesty.Runtime.csproj --configuration Release --output "./artifacts" --include-source
+
+#    - name: Push to NuGet
+#      env:
+#        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+#      run: dotnet nuget push ./artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --api-key $NUGET_API_KEY

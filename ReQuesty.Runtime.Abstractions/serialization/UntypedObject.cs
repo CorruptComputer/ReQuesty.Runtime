@@ -1,0 +1,15 @@
+﻿namespace ReQuesty.Runtime.Abstractions.Serialization;
+
+/// <summary>
+///   Represents an untyped node with object value.
+/// </summary>
+/// <param name="properties">Properties associated with the node.</param>
+public class UntypedObject(IDictionary<string, UntypedNode> properties) : UntypedNode
+{
+    private readonly IDictionary<string, UntypedNode> _properties = properties;
+    /// <summary>
+    ///   Gets properties associated with untyped object node.
+    /// </summary>
+    /// <returns>Properties associated with untyped object node.</returns>
+    public new IDictionary<string, UntypedNode> GetValue() => _properties;
+}

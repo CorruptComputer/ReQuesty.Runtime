@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- Build info -->
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Library</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <Deterministic>true</Deterministic>
+
+    <!-- Assembly/NuGet info -->
+    <Version>0.0.1</Version>
+    <Authors>Nickolas Gupton and kiota-dotnet contributors up to commit a39e975f0f8060325bc165de352312ba8c69f0a2</Authors>
+    <RepositoryUrl>https://github.com/CorruptComputer/ReQuesty.Runtime</RepositoryUrl>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
+    <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
+    <SourceRevisionId>main</SourceRevisionId>
+    <Features>strict</Features>
+    <PackageTags></PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../ReQuesty.Runtime.Abstractions/ReQuesty.Runtime.Abstractions.csproj" />
+    <ProjectReference Include="../ReQuesty.Runtime.Http/ReQuesty.Runtime.Http.csproj" />
+    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Form/ReQuesty.Runtime.Serialization.Form.csproj" />
+    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Json/ReQuesty.Runtime.Serialization.Json.csproj" />
+    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Multipart/ReQuesty.Runtime.Serialization.Multipart.csproj" />
+    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Text/ReQuesty.Runtime.Serialization.Text.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.12.19">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

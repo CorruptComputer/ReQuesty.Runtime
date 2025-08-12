@@ -1,7 +1,0 @@
-{
-	"cSpell.words": [
-		"Kiota"
-	],
-	"editor.formatOnSave": true,
-	"dotnet-test-explorer.testProjectPath": "**/*.Tests.csproj"
-}
