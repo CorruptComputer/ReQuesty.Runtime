@@ -12,7 +12,7 @@
     <Deterministic>true</Deterministic>
 
     <!-- Assembly/NuGet info -->
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Authors>Nickolas Gupton and kiota-dotnet contributors up to commit a39e975f0f8060325bc165de352312ba8c69f0a2</Authors>
     <RepositoryUrl>https://github.com/CorruptComputer/ReQuesty.Runtime</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -29,15 +29,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../ReQuesty.Runtime.Abstractions/ReQuesty.Runtime.Abstractions.csproj" />
-    <ProjectReference Include="../ReQuesty.Runtime.Http/ReQuesty.Runtime.Http.csproj" />
-    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Form/ReQuesty.Runtime.Serialization.Form.csproj" />
-    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Json/ReQuesty.Runtime.Serialization.Json.csproj" />
-    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Multipart/ReQuesty.Runtime.Serialization.Multipart.csproj" />
-    <ProjectReference Include="../ReQuesty.Runtime.Serialization.Text/ReQuesty.Runtime.Serialization.Text.csproj" />
+    <ProjectReference Include="../ReQuesty.Runtime.Generated/ReQuestyGenerated.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Std.UriTemplate" Version="2.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.12.19">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
