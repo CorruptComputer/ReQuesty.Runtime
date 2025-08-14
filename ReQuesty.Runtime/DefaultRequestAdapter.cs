@@ -22,7 +22,8 @@ public class DefaultRequestAdapter : HttpClientRequestAdapter
     /// <param name="serializationWriterFactory">The serialization writer factory.</param>
     /// <param name="httpClient">The native HTTP client.</param>
     /// <param name="observabilityOptions">The observability options.</param>
-    public DefaultRequestAdapter(IAuthenticationProvider authenticationProvider, IAsyncParseNodeFactory? parseNodeFactory = null, ISerializationWriterFactory? serializationWriterFactory = null, HttpClient? httpClient = null, ObservabilityOptions? observabilityOptions = null) : base(authenticationProvider, parseNodeFactory, serializationWriterFactory, httpClient, observabilityOptions)
+    public DefaultRequestAdapter(IAuthenticationProvider authenticationProvider, IAsyncParseNodeFactory? parseNodeFactory = null, ISerializationWriterFactory? serializationWriterFactory = null, HttpClient? httpClient = null, ObservabilityOptions? observabilityOptions = null)
+        : base(authenticationProvider, parseNodeFactory, serializationWriterFactory, httpClient, observabilityOptions)
     {
         SetupDefaults();
     }

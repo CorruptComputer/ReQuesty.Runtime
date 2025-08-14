@@ -36,7 +36,9 @@ public class HttpClientRequestAdapter : IRequestAdapter, IDisposable
     /// </summary>
     public HttpClientRequestAdapter(IAuthenticationProvider authenticationProvider, IAsyncParseNodeFactory? parseNodeFactory = null, ISerializationWriterFactory? serializationWriterFactory = null, HttpClient? httpClient = null, ObservabilityOptions? observabilityOptions = null)
     {
-        authProvider = authenticationProvider ?? throw new ArgumentNullException(nameof(authenticationProvider));
+        ArgumentNullException.ThrowIfNull(authenticationProvider);
+
+        authProvider = authenticationProvider;
         createdClient = httpClient == null;
         client = httpClient ?? ReQuestyClientFactory.Create();
         BaseUrl = client.BaseAddress?.ToString();

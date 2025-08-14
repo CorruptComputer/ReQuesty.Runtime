@@ -23,6 +23,12 @@ namespace ReQuesty.Runtime.Tests
             int serializerCount = SerializationWriterFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories.Count;
             int deserializerCount = ParseNodeFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories.Count;
 
+            // Debug output for this, tests pass locally but in CI there seems to be an extra serializer registered here.
+            foreach (KeyValuePair<string, ISerializationWriterFactory> factory in SerializationWriterFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories)
+            {
+                Console.WriteLine($"Serializer: {factory.Key} -> {factory.Value.GetType().Name}");
+            }
+
             Assert.Equal(4, serializerCount); // four serializers present
             Assert.Equal(3, deserializerCount);// three deserializers present
 
