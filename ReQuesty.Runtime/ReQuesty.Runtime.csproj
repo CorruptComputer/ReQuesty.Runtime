@@ -12,7 +12,7 @@
     <Deterministic>true</Deterministic>
 
     <!-- Assembly/NuGet info -->
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <Authors>Nickolas Gupton and kiota-dotnet contributors up to commit a39e975f0f8060325bc165de352312ba8c69f0a2</Authors>
     <RepositoryUrl>https://github.com/CorruptComputer/ReQuesty.Runtime</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
