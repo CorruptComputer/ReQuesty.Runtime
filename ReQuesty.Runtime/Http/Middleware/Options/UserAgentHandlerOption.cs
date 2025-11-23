@@ -1,4 +1,5 @@
 ﻿using ReQuesty.Runtime.Abstractions;
+using ReQuesty.Runtime.Helpers;
 
 namespace ReQuesty.Runtime.Http.Middleware.Options;
 
@@ -20,5 +21,5 @@ public class UserAgentHandlerOption : IRequestOption
     /// <summary>
     ///   The product version to append to the user agent header
     /// </summary>
-    public string ProductVersion { get; set; } = ReQuesty.Runtime.Generated.Version.Current();
+    public string ProductVersion { get; set; } = RuntimeHelper.GetRuntimeVersion();
 }
