@@ -610,7 +610,7 @@ public class RequestInformationTests
         // Act
         testRequest.AddQueryParameters(new GetQueryParameters { DataSets = new TestEnum[] { TestEnum.First, TestEnum.Second } });
         // Assert
-        Assert.Equal("http://localhost/me?datasets=Value_1,Value_2", testRequest.URI.ToString());
+        Assert.Equal("http://localhost/me?datasets=Value_1,value_2", testRequest.URI.ToString());
     }
 
     [Fact]
@@ -640,7 +640,7 @@ public class RequestInformationTests
         // Act
         testRequest.PathParameters.Add("dataset", new TestEnum[] { TestEnum.First, TestEnum.Second });
         // Assert
-        Assert.Equal("http://localhost/Value_1,Value_2", testRequest.URI.ToString());
+        Assert.Equal("http://localhost/Value_1,value_2", testRequest.URI.ToString());
     }
 
     [Fact]
