@@ -284,15 +284,18 @@ public class HttpClientRequestAdapter : IRequestAdapter, IDisposable
                     {
                         result = null;
                     }
-                    else if (modelType == typeof(bool?))
+                    else if (modelType == typeof(bool?)
+                             || modelType == typeof(bool))
                     {
                         result = rootNode.GetBoolValue();
                     }
-                    else if (modelType == typeof(byte?))
+                    else if (modelType == typeof(byte?)
+                             || modelType == typeof(byte))
                     {
                         result = rootNode.GetByteValue();
                     }
-                    else if (modelType == typeof(sbyte?))
+                    else if (modelType == typeof(sbyte?)
+                             || modelType == typeof(sbyte))
                     {
                         result = rootNode.GetSbyteValue();
                     }
@@ -300,39 +303,48 @@ public class HttpClientRequestAdapter : IRequestAdapter, IDisposable
                     {
                         result = rootNode.GetStringValue();
                     }
-                    else if (modelType == typeof(int?))
+                    else if (modelType == typeof(int?)
+                             || modelType == typeof(int))
                     {
                         result = rootNode.GetIntValue();
                     }
-                    else if (modelType == typeof(float?))
+                    else if (modelType == typeof(float?)
+                             || modelType == typeof(float))
                     {
                         result = rootNode.GetFloatValue();
                     }
-                    else if (modelType == typeof(long?))
+                    else if (modelType == typeof(long?)
+                             || modelType == typeof(long))
                     {
                         result = rootNode.GetLongValue();
                     }
-                    else if (modelType == typeof(double?))
+                    else if (modelType == typeof(double?)
+                             || modelType == typeof(double))
                     {
                         result = rootNode.GetDoubleValue();
                     }
-                    else if (modelType == typeof(decimal?))
+                    else if (modelType == typeof(decimal?)
+                             || modelType == typeof(decimal))
                     {
                         result = rootNode.GetDecimalValue();
                     }
-                    else if (modelType == typeof(Guid?))
+                    else if (modelType == typeof(Guid?)
+                             || modelType == typeof(Guid))
                     {
                         result = rootNode.GetGuidValue();
                     }
-                    else if (modelType == typeof(DateTimeOffset?))
+                    else if (modelType == typeof(DateTimeOffset?)
+                             || modelType == typeof(DateTimeOffset))
                     {
                         result = rootNode.GetDateTimeOffsetValue();
                     }
-                    else if (modelType == typeof(TimeSpan?))
+                    else if (modelType == typeof(TimeSpan?)
+                             || modelType == typeof(TimeSpan))
                     {
                         result = rootNode.GetTimeSpanValue();
                     }
-                    else if (modelType == typeof(Date?))
+                    else if (modelType == typeof(Date?)
+                             || modelType == typeof(Date))
                     {
                         result = rootNode.GetDateValue();
                     }
