@@ -30,26 +30,36 @@ public static class EnumHelpers
             while (valueSpan.Length > 0)
             {
                 int commaIndex = valueSpan.IndexOf(',');
-                ReadOnlySpan<char> valueNameSpan = commaIndex < 0 ? valueSpan : valueSpan.Slice(0, commaIndex);
+
+                ReadOnlySpan<char> valueNameSpan = commaIndex < 0
+                    ? valueSpan
+                    : valueSpan[..commaIndex];
+
                 valueNameSpan = ToEnumRawName<T>(valueNameSpan);
                 if (Enum.TryParse<T>(valueNameSpan, true, out T result))
                 {
                     value |= (int)(object)result;
                 }
 
-                valueSpan = commaIndex < 0 ? [] : valueSpan.Slice(commaIndex + 1);
+                valueSpan = commaIndex < 0
+                    ? []
+                    : valueSpan[(commaIndex + 1)..];
             }
             return (T)(object)value;
         }
         else
         {
-            return Enum.TryParse<T>(rawValue, true, out T result) ? result : null;
+            return Enum.TryParse<T>(rawValue, true, out T result)
+                ? result
+                : null;
         }
     }
 
     private static string ToEnumRawName<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>(string value) where T : struct, Enum
     {
-        return TryGetFieldValueName(typeof(T), value, out string? val) ? val : value;
+        return TryGetFieldValueName(typeof(T), value, out string? val)
+            ? val
+            : value;
     }
 
     private static ReadOnlySpan<char> ToEnumRawName<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>(ReadOnlySpan<char> span) where T : struct, Enum
@@ -70,14 +80,22 @@ public static class EnumHelpers
         {
             return null;
         }
-        Type enumType = (Nullable.GetUnderlyingType(type) is { IsEnum: true } underlyingType) ? underlyingType : type;
+
+        Type enumType = (Nullable.GetUnderlyingType(type) is { IsEnum: true } underlyingType)
+            ? underlyingType
+            : type;
+
         if (enumType.IsDefined(typeof(FlagsAttribute)))
         {
             int intValue = 0;
             while (rawValue.Length > 0)
             {
                 int commaIndex = rawValue.IndexOf(',');
-                string valueName = commaIndex < 0 ? rawValue : rawValue.Substring(0, commaIndex);
+
+                string valueName = commaIndex < 0
+                    ? rawValue
+                        : rawValue[..commaIndex];
+
                 if (TryGetFieldValueName(enumType, valueName, out string? value))
                 {
                     valueName = value;
@@ -88,9 +106,13 @@ public static class EnumHelpers
                     intValue |= (int)enumPartResult!;
                 }
 
-                rawValue = commaIndex < 0 ? string.Empty : rawValue.Substring(commaIndex + 1);
+                rawValue = commaIndex < 0
+                    ? string.Empty
+                    : rawValue[(commaIndex + 1)..];
             }
-            result = intValue > 0 ? Enum.Parse(enumType, intValue.ToString(), true) : null;
+            result = intValue > 0
+                ? Enum.Parse(enumType, intValue.ToString(), true)
+                : null;
         }
         else
         {
@@ -110,7 +132,7 @@ public static class EnumHelpers
         valueName = string.Empty;
         foreach (FieldInfo field in type.GetFields())
         {
-            if (field.GetCustomAttribute<EnumMemberAttribute>() is { } attr && rawValue.Equals(attr.Value, StringComparison.Ordinal))
+            if (field.GetCustomAttribute<EnumMemberAttribute>() is { } attr && rawValue.Equals(attr.Value, StringComparison.OrdinalIgnoreCase))
             {
                 valueName = field.Name;
                 return true;

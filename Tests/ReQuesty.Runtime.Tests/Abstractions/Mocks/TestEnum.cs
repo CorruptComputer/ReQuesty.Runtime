@@ -6,6 +6,6 @@ public enum TestEnum
 {
     [EnumMember(Value = "Value_1")]
     First,
-    [EnumMember(Value = "Value_2")]
+    [EnumMember(Value = "value_2")]
     Second,
 }
