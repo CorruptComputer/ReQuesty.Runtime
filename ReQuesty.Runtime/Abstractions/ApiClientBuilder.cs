@@ -67,15 +67,15 @@ public static class ApiClientBuilder
             EnableBackingStoreForParseNodeRegistry(ParseNodeFactoryRegistry.DefaultInstance);
         }
 
-        string[] keysToUpdate = registry
-                            .ContentTypeAssociatedFactories
-                            .Where(static x => x.Value is not BackingStoreParseNodeFactory or ParseNodeFactoryRegistry)
-                            .Select(static x => x.Key)
-                            .ToArray();
+        string[] keysToUpdate = [.. registry.ContentTypeAssociatedFactories
+                                            .Where(static x => x.Value is not (BackingStoreParseNodeFactory or ParseNodeFactoryRegistry))
+                                            .Select(static x => x.Key)];
+
         foreach (string? key in keysToUpdate)
         {
             registry.ContentTypeAssociatedFactories[key] = new BackingStoreParseNodeFactory(registry.ContentTypeAssociatedFactories[key]);
         }
+
         return registry;
     }
 
@@ -86,11 +86,9 @@ public static class ApiClientBuilder
             EnableBackingStoreForSerializationRegistry(SerializationWriterFactoryRegistry.DefaultInstance);
         }
 
-        string[] keysToUpdate = registry
-            .ContentTypeAssociatedFactories
-            .Where(static x => x.Value is not BackingStoreSerializationWriterProxyFactory or SerializationWriterFactoryRegistry)
-            .Select(static x => x.Key)
-            .ToArray();
+        string[] keysToUpdate = [.. registry.ContentTypeAssociatedFactories
+                                            .Where(static x => x.Value is not (BackingStoreSerializationWriterProxyFactory or SerializationWriterFactoryRegistry))
+                                            .Select(static x => x.Key)];
 
         foreach (string? key in keysToUpdate)
         {
